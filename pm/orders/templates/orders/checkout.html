@@ -1,0 +1,104 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+
+{% block title %}Корзина{% endblock title %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'source/css/checkout.css' %}" />
+
+    {% comment %} <h5>Общая стоимость: {{ request.session.basket.total_amount }}₽</h5> {% endcomment %}
+    
+    {{ request.session.basket.products }}
+    
+    {% if products_in_basket %}
+        <form method="post">
+        {% csrf_token %}
+            <div class="checkoutdiv">
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Фото</th>
+                                <th>Название</th>
+                                <th>Размер</th>
+                                <th>Количество</th>
+                                <th>Цена</th>
+                                <th>Сумма</th>
+                                <th>Убрать</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pib in products_in_basket  %}
+                                <a href="{% url 'catalog:details' pib.item.slug %}">
+                                    <tr>
+                                        <td>
+                                            <img src="{{ pib.item.frontpic.url }}" alt="" style="max-width: 80px; min-width: 80px; max-height: 80px; min-height: 80px;">
+                                        </td>
+
+                                        <td>
+                                            {{ pib.item.name }}
+                                        </td>
+
+                                        <td>
+                                            {% if pib.size != null %}
+                                                {{ pib.size }}
+                                            {% endif %}
+                                        </td>
+
+                                        {% comment %} <td class="border-black border-2" style="justify-items: center;"> {% endcomment %}
+                                        <td>
+                                            <input max="100" type="number" value="{{ pib.count }}" name="product_in_basket_{{pib.id}}"
+                                            class="product_in_basket_count">
+                                        </td>
+
+                                        <td>
+                                            <span class="product_price">
+                                                {{ pib.price_per_item }}₽
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <span class="total_product_in_basket_amount">
+                                                {{ pib.total_price }}	
+                                            </span>₽
+                                        </td>
+
+                                        <td class="delete-td">
+                                            <button type="submit" class="delete-item" data-product_id="{{ pib.id }}">
+                                                <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.11 2.697L2.698 4.11 6.586 8l-3.89 3.89 1.415 1.413L8 9.414l3.89 3.89 1.413-1.415L9.414 8l3.89-3.89-1.415-1.413L8 6.586l-3.89-3.89z" fill="#000"></path>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </a>                          
+                            {% endfor %}  
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="infodiv">
+                    <div class="basketinputs">
+                        <p class="phonepar">
+                            Номер телефона: {{form.phone}}
+                        </p>
+                        <p class="addresspar">
+                            Адрес доставки: {{ form.address }}
+                        </p>
+                    </div>
+                    <div class="sumdiv">
+                        <strong>Сумма заказа: </strong><span id="total_order_amount"></span>₽
+                    </div>
+                    <div>
+                        <button class="confirmbutton" type="submit">Подтвердить заказ</button>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <center>
+                <p class="emptycart">Корзина пуста</p>
+            </center>
+        </form>
+    {% endif %}
+{% endblock content %}

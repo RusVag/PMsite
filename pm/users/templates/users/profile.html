@@ -1,0 +1,31 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+{% block title %}Профиль{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'source/css/profile.css' %}" />
+
+
+<div class="profile_form">
+    <h1>Профиль</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if user.photo %}
+        <p><img class="profile_pic" src="{{ user.photo.url }}" alt=""></p>
+        {% else %}
+        <p><img class="profile_pic" src="{{ default_img }}" alt=""></p>
+        {% endif %}
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+        <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+    
+        <p><button type="submit">Сохранить</button></p>
+        
+        
+    </form>
+    <a href="{% url "users:password_change" %}"><button type="submit">Изменить пароль</button></a>
+</div>
+
+{% endblock %}

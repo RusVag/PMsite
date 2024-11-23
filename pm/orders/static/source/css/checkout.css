@@ -1,0 +1,100 @@
+.checkoutdiv{
+    background-color: rgba(0, 0, 0, 0.562);
+    color: white;
+    border-color: wheat;
+    border-width: 0px 2px 0px 2px;
+    border-radius: 10px;
+    width: 1500px;
+    min-height: 500px;
+    position: relative;
+    top: 30px;
+    left: 180px;
+    .basketinputs{
+        display: inline-flex;
+        margin: 20px;
+        gap: 50px;
+
+        input{
+            background-color: rgba(0, 0, 0, 0.562);
+            border-radius: 10px;
+            border-color: wheat;
+            border-width: 0px 1px 0px 1px;
+            color: white;
+        }
+    }
+}
+
+tr{
+    border-width: 1px;
+    border-color: wheat;
+}
+
+
+.delete-item{
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+table{
+    img{
+        display: inline-block;
+        text-align: center;
+    }
+    margin: 20px;
+    position: relative;
+    top: 10px;
+    left: 40px;
+    width: 1000px;
+    height: fit-content;
+    border-width: 2px;
+    border-radius: 100px;
+    border-color: wheat;
+    text-align: center;
+    justify-items: center;
+    input{
+        text-align: center;
+        width: 80px;
+        background-color: rgba(0, 0, 0, 0.473);
+        border-radius: 10px;
+    }
+}
+.basketinputs{
+    position: absolute;
+    top: 10px;
+    left: 1060px;
+    flex-direction: column;
+}
+.sumdiv{
+    position: absolute;
+    top: 240px;
+    left: 1240px;
+    border-width: 0px 0px 1px 0px;
+    border-color: white;
+    border-style: solid;
+    width: fit-content;
+}
+.confirmbutton{
+    transition: 0.3s all;
+    color: white;
+    position: absolute;
+    top: 300px;
+    left: 1250px;
+    border-width: 0px;
+    border-color: white;
+}
+.confirmbutton:hover{
+    transition: 0.3s all;
+    color: maroon;
+    border-width: 0px 0px 1px 0px;
+}
+.emptycart{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.445);
+    width: fit-content;
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+    top: 50px;
+
+}

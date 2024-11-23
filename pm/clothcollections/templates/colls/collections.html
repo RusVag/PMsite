@@ -1,0 +1,28 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+
+{% block title %}PM - Коллекции{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'source/css/collections.css' %}" />
+
+    <div class="catdiv">
+        <div class="itemcoldiv">
+            {% if collection %}
+            {% for el in collection %}
+                <div class="colldiv">
+
+                    {% if el.photo%}
+                    <img src="{{ el.photo.url }}" class="collimg" alt="">
+                    {% endif %}
+                    <a class="goovercoll" href="{% url "colls:details" el.slug %}">
+                        Перейти
+                    </a>
+                    
+                    <p class="collname">"{{ el.name }}" collection. {{ el.created | date:"m.y" }}</p>
+                </div>
+
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock  %}

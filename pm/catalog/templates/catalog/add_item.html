@@ -1,0 +1,22 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+
+
+{% block title %}Меню добавления{% endblock title %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'source/css/add_item.css' %}" />
+
+    <div>
+        <div class="itemadddiv">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Сохранить</button>
+    
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

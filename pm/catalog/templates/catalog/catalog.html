@@ -1,0 +1,47 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+
+{% block title %}PM - Каталог{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'source/css/addbutton.css' %}" />
+<link rel="stylesheet" href="{% static 'source/css/catform.css' %}" />
+
+<div style="margin-top: 85px;">
+    <center>
+        <div class="catname">
+            <li>
+                <a href="{% url 'catalog:index' %}">Все</a>
+            </li>
+            {% for cat in categories  %}
+                <li>
+                    <a href="{% url 'catalog:category' cat.slug %}">{{cat.kindName}}</a>
+                </li>
+            {% endfor %}
+        </div>
+    </center>
+
+    <div class="catdiv">
+        <div class="itemrowdiv">
+            {% if item %}
+            {% for el in item %}
+            <a href="{% url "catalog:details" el.slug %}">
+                    
+                <div class="itemdiv">
+                    <div class="itemImages">
+                        {% if el.frontpic or el.backpic %}
+                        <img src="{{ el.frontpic.url }}" class="frontimg" alt="">
+                        <img src="{{ el.backpic.url }}" class="backimg" alt="">
+                        {% endif %}
+                        
+                        
+                    </div>
+                    <h3>{{ el.typeName.typeName }} "{{ el.name|upper  }}"</h3>
+                    <h4>{{ el.price }}₽</h4>
+                </div>
+            </a>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+</div>
+{% endblock  %}

@@ -1,0 +1,23 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+{% block title %}PM - Главная{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'source/css/home.css' %}">
+<div>
+    <div class="catandcoll">
+        <li>
+            <a href="{% url 'colls:index' %}">
+                <img src="{% static 'source/img/colls.webp' %}" alt="">
+                <p class="pcoll">Коллекции</p>
+            </a>
+        </li>
+        <li>
+            <a href="{% url "catalog:index" %}">
+                <img src="{% static 'source/img/catalog.webp' %}" alt="">
+                <p class="pcat">Каталог</p>
+            </a>
+        </li>
+    </div>
+</div>
+{% endblock content %}

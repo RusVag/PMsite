@@ -1,0 +1,117 @@
+body{
+    max-width: 100vw;
+}
+
+.itemImages img{
+    position: absolute;
+    min-width: 500px;
+    min-height: 500px;
+    max-width: 500px;
+    max-height: 500px;
+    left: 20vw;
+    top: 16vh;
+}
+.itemImages .backimg{
+    display: none;
+}
+.itemImages:hover .frontimg{
+    display: none;
+}
+.itemImages:hover .backimg{
+    display: block;
+}
+
+.itemInfo{
+    position: absolute;
+    left: 55vw;
+    top: 14vh;
+    color: wheat;  
+    z-index: -1;
+
+}
+#itemname{
+    font-size: 4vw;
+}
+#itemprice{
+    font-size: 3vw;
+}
+#itemdesc{
+    font-size: 1.2vw;
+    width: 560px;
+}
+/* #basketbttn{
+    color: wheat;
+    background-color: black;
+    border-width: 0.2vh; 
+    border-radius: 1vh;
+    border-color: wheat;
+    position: absolute;
+    padding: 0 1vh;
+    left: 55vw;
+    top: 60vh;
+}
+#basketinput{
+    color: wheat;
+    background-color: black;
+    border-width: 0.2vh; 
+    border-radius: 1vh;
+    border-color: wheat;
+    position: absolute;
+    padding: 0 1vh;
+    left: 55vw;
+    top: 55vh;
+} */
+
+
+
+/* #basketform{
+    input{
+        background-color: black;
+        width: 2vw;
+    };
+    color: wheat;
+    background-color: black;
+    border-width: 0.2vh; 
+    border-radius: 1vh;
+    border-color: wheat;
+    position: absolute;
+    padding: 0 1vh;
+    left: 55vw;
+    top: 55vh;
+} */
+#basketform{
+    display: flex;
+    .amountdiv{
+        gap: 20px;
+        input{
+            height: 34px;
+            width: 50px;
+            text-align: center;
+            border-radius: 10px;
+            color: wheat;
+            background-color: rgba(0, 0, 0, 0.438);
+            border-color: wheat;
+            border-width: 0px 0px 1px 0px;
+        }
+    };
+
+    button{
+        margin: 20px 0px 0px 0px;
+        border-width: 0px 0px 2px 0px;
+        border-radius: 10px;
+        padding: 0px 10px;
+        border-color: wheat;
+        background-color: rgba(0, 0, 0, 0.438);
+        
+    }
+    color: wheat;
+    background-color: rgba(0, 0, 0, 0.438);
+    border-width: 0.2vh; 
+    border-radius: 1vh;
+    border-color: wheat;
+    position: absolute;
+    padding: 20px 40px;
+    left: 21vw;
+    top: 70vh;
+    gap: 50px;
+}

@@ -1,0 +1,70 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+
+{% block title %}{{item.name|upper }}{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'source/css/details.css' %}" />
+
+<div class="itemdiv">
+    <div class="items">
+        <div class="itemImages">
+            {% if item.frontpic or item.backpic %}
+            <img src="{{ item.frontpic.url }}" class="frontimg" alt="">
+            <img src="{{ item.backpic.url }}" class="backimg" alt="">
+            {% endif %}  
+        </div>
+        <div class="itemInfo">
+            <p id="itemname">{{item.typeName.typeName}} "{{ item.name|upper }}"</p>
+            <p id="itemprice">{{ item.price }}₽</p>
+            <p id="itemdesc">{{ item.description }}</p>
+        </div>
+        
+        <div id='basketform'>
+            
+                    <form class="form_buying_product" action="{% url "basket:basket_adding" %}">
+                        {% csrf_token %}
+                        <div class="amountdiv">
+                            <label for="inputamount">Количество: </label>
+                            <input name="inputamount" id='countinput' type="number" value=1 inputmode="numeric">шт.
+                        </div>
+                        
+                        {% if item.size_choice == item.TOP %}
+                            <link rel="stylesheet" href="{% static 'source/css/detailswithsize.css' %}" />
+                            <div class="size_div">
+                                <label for="size_select">Размер: </label>
+                                <select name="size_select" id="size_select">
+                                    <option value="S-M" selected>Первый размер(S-M)</option>
+                                    <option value="L-XL">Второй размер(L-XL)</option>
+                                    <option value="2XL-3XL">Третий размер(2XL-3XL)</option>
+                                </select>
+                            </div>
+                        {% endif %}
+                        {% if item.size_choice == item.BOTTOM %}
+                            <link rel="stylesheet" href="{% static 'source/css/detailswithsize.css' %}" />
+                            <div class="size_div">
+                                <label for="size_select">Размер: </label>
+                                <select name="size_select" id="size_select">
+                                    <option value="XS" >XS</option>
+                                    <option value="S" selected>S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="2XL">2XL</option>
+                                </select>
+                            </div>
+                        {% endif %}
+
+                        <button id="submit_btn" type="submit"
+                            data-product_img= '<img src="{{ item.frontpic.url }}">'
+                            data-product_slug = '{{ item.slug }}'
+                            data-product_id="{{ item.id }}"
+                            data-product_name="{{ item.name }}"
+                            data-product_price = '{{ item.price }}'
+                        >в корзину</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock  %}

@@ -1,0 +1,17 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+{% block title %}Регистрация{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'source/css/register.css' %}" />
+    <div class="regform">
+        <h1>Регистрация</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden", name="next", value="{{ next }}">
+            {{ form.as_p }}
+            <p><button type="submit">Продолжить</button></p>
+        </form>
+
+    </div>
+{% endblock content %}

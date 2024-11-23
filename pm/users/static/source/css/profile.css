@@ -1,0 +1,73 @@
+.profile_form{
+    border-radius: 3rem;
+    border-color: maroon;
+    border-width: 0.4rex;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 40%;
+    padding: 2rem;
+    font-size: 1.6rem;
+    place-items: center;
+    position: relative;
+    left: 10%;
+    top: 10px;
+
+    
+}
+.profile_form input{
+    border-radius: 1rem;
+    margin: 1rex;
+    color: black;
+}
+.profile_form button{
+    /* border-color: white; */
+    border-radius: 1rem;
+    padding: 0.6rex, 1rem;
+    /* border-width: 0.3rex; */
+    position: relative;
+    transition: all 0.3s;
+}
+.profile_form button:hover{
+    /* border-color: white;
+    border-radius: 1rem; */
+    padding: 0.6rex;
+    /* border-width: 0.3rex; */
+
+    position: relative;
+    transition: all 0.3s;
+    bottom: -6px;
+    filter: invert(50%) sepia(100%) saturate(10000%)brightness(200%);
+
+}
+
+.profile_form{
+    &:focus-within {
+        
+        label{
+            transition: 0.3s;
+            filter: invert(50%) sepia(100%) saturate(10000%)brightness(200%);
+        }
+    }
+
+}
+
+.profile_form .profile_pic{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border-color: white;
+    border-width: 2px;
+}
+#id_photo{
+    color: white;
+    border-color: white;
+    border-width: 0.1rex;
+}
+.profile_form textarea{
+    color: black;
+    resize: none;
+    display: block;
+}

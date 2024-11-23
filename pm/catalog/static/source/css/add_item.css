@@ -1,0 +1,79 @@
+.itemadddiv{
+    border-radius: 3rem;
+    border-color: maroon;
+    border-width: 0.3rex;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 40%;
+    padding: 2rem;
+    font-size: 1.7rem;
+    place-items: center;
+    position: fixed;
+    left: 25%;
+    top: 15vh;
+
+    
+    
+}
+.itemadddiv {
+    select{color: black; border-radius: 1rem;}
+    input{color: black;}
+    #id_frontpic{color: white;}
+    #id_backpic{color: white;}
+}
+.itemadddiv input{
+    border-radius: 1rem;
+    border-color: white;
+    border-width: 0.1rex;
+    margin: 1rex;
+}
+
+
+
+
+.itemadddiv button{
+    /* border-color: white; */
+    border-radius: 1rem;
+    padding: 0.6rex, 1rem;
+    /* border-width: 0.3rex; */
+    position: relative;
+    transition: all 0.3s;
+}
+.itemadddiv button:hover{
+    /* border-color: white;
+    border-radius: 1rem; */
+    padding: 0.6rex;
+    /* border-width: 0.3rex; */
+
+    position: relative;
+    transition: all 0.3s;
+    bottom: -6px;
+    filter: invert(50%) sepia(100%) saturate(10000%)brightness(200%);
+
+}
+
+.itemadddiv{
+    &:focus-within {
+        
+        label{
+            transition: 0.3s;
+            filter: invert(50%) sepia(100%) saturate(10000%)brightness(200%);
+        }
+    }
+
+}
+textarea{
+    color: black;
+    resize: none;
+    display: block;
+}
+select{
+    option{
+        color: black;
+        font-weight: bold;
+        background-color: white;
+    }
+}

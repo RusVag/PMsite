@@ -1,0 +1,56 @@
+#basketform{
+    display: flex;
+    .amountdiv{
+        gap: 20px;
+        display: inline-flex;
+        width: 40px;
+        height: 40px;
+        input{
+            text-align: center;
+            border-radius: 10px;
+            width: 4rem;
+            color: wheat;
+            background-color: rgba(0, 0, 0, 0.438);
+            border-color: wheat;
+            border-width: 0px 0px 1px 0px;
+        }
+    };
+
+    .size_div{
+        gap: 20px;
+        select{
+            text-align: center;
+            border-radius: 10px;
+            width: 300px;
+            color: wheat;
+            background-color: rgba(0, 0, 0, 0.438);
+            border-color: wheat;
+            border-width: 0px 0px 1px 0px;
+            option{
+                color: black;
+                font-weight: bold;
+                background-color: white;
+            }
+        }
+
+    };
+    button{
+        margin: 20px 0px 0px 0px;
+        border-width: 0px 0px 2px 0px;
+        border-radius: 10px;
+        padding: 0px 10px;
+        border-color: wheat;
+        background-color: rgba(0, 0, 0, 0.438);
+        
+    }
+    color: wheat;
+    background-color: rgba(0, 0, 0, 0.438);
+    border-width: 0.2vh; 
+    border-radius: 1vh;
+    border-color: wheat;
+    position: absolute;
+    padding: 20px 40px;
+    left: 21vw;
+    top: 70vh;
+    gap: 50px;
+}

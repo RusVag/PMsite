@@ -1,0 +1,55 @@
+.loginform{
+    border-radius: 3rem;
+    border-color: maroon;
+    border-width: 0.4rex;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 30%;
+    padding: 2rem;
+    font-size: 2rem;
+    place-items: center;
+    position: relative;
+    left: 35%;
+    top: 50px;
+
+    
+}
+.loginform input{
+    border-radius: 1rem;
+    margin: 1rex;
+    color: black;
+}
+.loginform button{
+    /* border-color: white; */
+    /* border-radius: 1rem; */
+    padding: 0.4rex, 1rem; /*из-за второго значения форма движется при наведении на кнопки*/
+    /* border-width: 0.3rex; */
+    position: relative;
+    transition: all 0.3s;
+}
+.loginform button:hover{
+    /* border-color: white; */
+    /* border-radius: 1rem; */
+    padding: 0.4rex;
+    /* border-width: 0.3rex; */
+
+    position: relative;
+    transition: all 0.3s;
+    bottom: -6px;
+    filter: invert(50%) sepia(100%) saturate(10000%)brightness(200%);
+
+}
+
+.loginform{
+    &:focus-within {
+        
+        label{
+            transition: 0.3s;
+            filter: invert(50%) sepia(100%) saturate(10000%)brightness(200%);
+        }
+    }
+
+}

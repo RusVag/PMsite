@@ -1,0 +1,32 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+
+{% block title %}{{coll.name}}{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'source/css/details_coll.css' %}" />
+    <div class="itemdiv">
+        {% if coll.photo %}
+        <center>
+            <img id="collimg" src="{{coll.photo.url}}" alt="">
+            <p id="collname">"{{ coll.name }}" collection. {{ coll.created | date:"m.y" }}</p>
+        </center>
+        {% endif %}
+        {% for el in itemincoll  %}    
+        <div class="items">
+                <a href="{% url "catalog:details" el.item.slug %}">   
+                <div class="itemImages">
+                    {% if el.item.frontpic or el.item.backpic %}
+                            <img src="{{ el.item.frontpic.url }}" class="frontimg" alt="">
+                            <img src="{{ el.item.backpic.url }}" class="backimg" alt="">
+                    {% endif %}  
+                </div>
+                <div class="itemInfo">
+                        <p id="itemname">{{el.item.typeName.typeName}} "{{ el.item.name|upper }}"</p>
+                        <p id="itemprice">{{ el.item.price }}₽</p>
+                </div>
+            </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock  %}

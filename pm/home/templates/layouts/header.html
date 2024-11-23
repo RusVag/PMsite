@@ -1,0 +1,81 @@
+{% load static %}
+
+<header style="z-index: 10;">
+    <nav class="navbar">
+        <div class="logo"><a href="{% url "home:home" %}"><img src="{% static 'source/img/icon/favicon.ico' %}" alt=""></a></div>
+        <ul class="navlinks">
+            <div class="menu">
+                <div class="ssilki" >
+                    {% if user.is_authenticated %}
+    
+                        {% if user.is_superuser %}
+                        <li>
+                            <a href="{% url "catalog:add" %}">ДОБАВИТЬ</a>
+                        </li>
+                        <li> 
+                            <a href="{% url "admin:index" %}">АДМИН-ПАНЕЛЬ</a>
+                        </li>
+                        {% endif %}
+    
+                        <li>
+                            <a href="{% url "users:profile" %}">
+                                {{user.username}} |
+                            </a>
+                            <a href="{% url "users:logout" %}">
+                                <form method="post" action="{% url 'users:logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit">
+                                        | Выйти
+                                    </button>
+                                </form>
+                            </a>
+                        </li>             
+                    {% else %}
+                        <li>
+                            <a href="{% url "users:login" %}">Войти |</a><a href="{% url "users:register" %}">| Регистрация</a>
+                        </li>
+                    {% endif %}
+                </div>
+
+                <li>
+                    <div class="basket-container">
+                        <a class="basket-button" href="#"><img id="svg" src="{% static 'source/img/icon/cart.svg' %}" alt="">
+                            <span id="basket_products_amount">
+                                    {% if products_amount %}
+                                        ({{ products_amount }})
+                                    {% else %}
+                                        (0)
+                                    {% endif %}
+                            </span>
+                        </a>
+                        <div class="basket-items">
+                            <a id="check-basket" href="{% url "basket:checkout" %}">Корзина</a>
+                            <form method="post" class="form_buying_product" action="{% url "basket:basket_adding" %}">
+                                {% csrf_token %}
+
+                                <ul>
+                                    {% for pib in products_in_basket %}
+                                        <li>
+                                            <img src="{{ pib.item.frontpic.url }}">
+                                            {{pib.item.name}} * {{ pib.count }}шт. = {{ pib.total_price }}₽
+                                            <button type="submit" class="delete-item" 
+                                                data-product_id='{{ pib.id }}'
+                                                data-product_img='{{ pib.item.frontpic.url }}'>
+                                                
+                                                    <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.11 2.697L2.698 4.11 6.586 8l-3.89 3.89 1.415 1.413L8 9.414l3.89 3.89 1.413-1.415L9.414 8l3.89-3.89-1.415-1.413L8 6.586l-3.89-3.89z" fill="#000"></path>
+                                                    </svg>
+                                            </button>
+
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </nav>
+</header>
+{% comment %} <script src="{% static 'source/js/scripts.js' %}"></script> {% endcomment %}
